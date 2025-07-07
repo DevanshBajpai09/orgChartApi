@@ -1,0 +1,6 @@
+instruction: |
+  Generate Google Test unit tests for the given C++ file.
+  - Create unique test cases per function.
+  - Include all required headers.
+  - Do not repeat test logic.
+  - Format cleanly and follow best practices.
