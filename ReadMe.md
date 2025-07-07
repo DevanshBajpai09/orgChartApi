@@ -133,6 +133,16 @@ sudo apt-get install postgresql-all # PostgreSQL (for DB support)
 
 **⚠️ Note:** Install database libraries **before** installing Drogon to avoid errors.
 
+## ⚙️ Requirements
+
+- ✅ [CMake](https://cmake.org/)
+- ✅ [Drogon Framework](https://github.com/drogonframework/drogon)
+- ✅ [MinGW-w64 or GCC ≥ 11](https://www.mingw-w64.org/)
+- ✅ [Ollama](https://ollama.com) installed and running
+- ✅ Python 3.10+
+- ✅ GoogleTest (auto-fetched by CMake)
+
+---
 ### 🐉 Drogon Installation
 
 Now, let's install Drogon:
@@ -154,6 +164,43 @@ Once Drogon is installed, you can verify it with:
 
 ```bash
 drogon_ctl -v
+```
+
+## 🤖 Generate Unit Tests with Ollama
+
+✅ 1. Ensure Ollama is running
+```bash
+ollama run llama3
+```
+
+✅ 2. Run the Python script
+```bash
+python generate_tests.py
+
+```
+
+This script will:
+
+Read your models/dummy.cpp file
+
+Read your /prompts/initial_prompts.yaml rules
+
+Combine both into a formatted prompt
+
+Use llama3 via Ollama to generate tests
+
+Write output to tests/test_dummy.cpp
+
+
+## ⚒️ Build & Run Tests
+
+```bash
+mkdir -p build
+cd build
+cmake ..
+mingw32-make        # Use `make` if on Linux/macOS
+./unit_tests.exe    # Run on Windows
+
 ```
 
 You should see the Drogon version and other relevant information.
